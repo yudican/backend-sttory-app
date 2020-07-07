@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Genre;
+use App\Models\Licence;
 use App\Models\Story;
 use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
@@ -23,14 +25,14 @@ class StorySeeder extends Seeder
                 'language' => $faker->randomElement(['ID', 'EN']),
                 'price' => rand(10000, 99999),
                 'status' => 'PUBLISH',
-                'genre_id' => $faker->randomElement(['109967d3-86a1-46eb-9046-97526b064002', '310f2fe3-19e0-4e55-b23e-fb152c6e1c28', '8b2d1ef8-a126-4cbc-bec8-319d400413f6']),
-                'cover' => 'story/cover/g0V7l1SCUhjWYTPLpkbOAItXYbscck97Lqy6f8NY.png',
-                'licence_id' => '439864fc-4bc0-4eae-9349-947124f8dc6b',
+                'genre_id' => $faker->randomElement(Genre::all()->pluck('id')->toArray()),
+                'cover' => 'story/cover/default.png',
+                'licence_id' => $faker->randomElement(Licence::all()->pluck('id')->toArray()),
                 'user_id' => rand(107, 156)
             ]);
             for ($j = 0; $j < rand(20, 50); $j++) {
                 $story->parts()->create([
-                    'part_cover' => 'story/part/cover/GosFmVuYPWSRlprmSqR7CHENJZtUZBXDfMGGfzT9.png',
+                    'part_cover' => 'story/part/cover/default.png',
                     'part_title' => 'Chapter' . ($j + 1) . ' - ' . $faker->realText($maxNbChars = rand(20, 50), $indexSize = 1),
                     'part_description' => $faker->realText($maxNbChars = rand(500, 1500), $indexSize = 1),
                 ]);

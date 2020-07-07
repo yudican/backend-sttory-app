@@ -1,8 +1,12 @@
 <?php
 
 /** @var  \Illuminate\Database\Eloquent\Factory $factory */
+
+use Ramsey\Uuid\Uuid;
+
 $factory->define(Brackets\AdminAuth\Models\AdminUser::class, function (Faker\Generator $faker) {
     return [
+        'id' => Uuid::uuid4()->toString(),
         'first_name' => $faker->firstName,
         'last_name' => $faker->lastName,
         'email' => $faker->email,
@@ -24,8 +28,8 @@ $factory->define(App\Models\Genre::class, static function (Faker\Generator $fake
         'image' => $faker->sentence,
         'created_at' => $faker->dateTime,
         'updated_at' => $faker->dateTime,
-        
-        
+
+
     ];
 });
 /** @var  \Illuminate\Database\Eloquent\Factory $factory */
@@ -35,7 +39,7 @@ $factory->define(App\Models\Licence::class, static function (Faker\Generator $fa
         'descriptions' => $faker->text(),
         'created_at' => $faker->dateTime,
         'updated_at' => $faker->dateTime,
-        
-        
+
+
     ];
 });

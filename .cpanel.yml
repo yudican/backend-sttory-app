@@ -1,0 +1,7 @@
+deployment:
+ 
+ tasks:
+ 
+ - export DEPLOYPATH=/home/yudicand/story-api
+ 
+ - /usr/bin/rsync -Paz * $DEPLOYPATH --delete
