@@ -195,7 +195,7 @@ class FillDefaultAdminUserAndPermissions extends Migration
                 if ($userItem === null) {
                     $userId = DB::table($this->userTable)->insertGetId($user);
 
-                    AdminUser::find($userId)->addMedia(storage_path() . '/images/avatar.png')
+                    AdminUser::find($userId)->addMedia(asset('storage/images/avatar.png'))
                         ->preservingOriginal()
                         ->toMediaCollection('avatar', 'media');
 
