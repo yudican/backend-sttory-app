@@ -28,11 +28,4 @@ class Licence extends Model
     {
         return $this->hasOne(Story::class);
     }
-
-    /* ************************ ACCESSOR ************************* */
-
-    public function getResourceUrlAttribute()
-    {
-        return url('/admin/licences/' . $this->getKey());
-    }
 }
